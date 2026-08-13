@@ -125,7 +125,6 @@ DSP-Signal-Processing-Toolkit/
 │
 ├── Results/
 │   ├── c_filtered_signal.csv
-│   ├── signal_comparison.png
 │   ├── c_vs_matlab.png
 │   └── fft_analysis.png
 │
