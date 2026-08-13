@@ -92,20 +92,3 @@ The FIR filter was implemented independently in C and compared against MATLAB's 
 
 The outputs closely match, validating the C implementation.
 
-## Project Structure
-
-```text
-DSP-Signal-Processing-Toolkit/
-│
-├── C/
-│   └── fir_filter.c
-│
-├── MATLAB/
-│   ├── fir_filter.m
-│   ├── compare_c_matlab.m
-│   └── fft_analysis.m
-│
-├── Results/
-│   └── c_filtered_signal.csv
-│
-└── README.md
