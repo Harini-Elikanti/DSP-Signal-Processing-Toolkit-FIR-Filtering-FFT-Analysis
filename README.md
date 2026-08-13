@@ -1,22 +1,22 @@
 # DSP Signal Processing Toolkit
 
-A digital signal processing project implemented using MATLAB and C, demonstrating signal generation, noise modeling, FIR filtering, convolution-based implementation, and FFT-based frequency analysis.
+A digital signal processing project implemented using **C and MATLAB**, demonstrating signal generation, noise modeling, FIR filtering, convolution-based implementation, C-MATLAB verification, and FFT-based frequency analysis.
 
 ## Project Overview
 
-This project demonstrates a basic DSP processing pipeline:
+This project implements a basic DSP processing pipeline:
 
-Signal Generation → Noise Addition → FIR Filtering → FFT Analysis
+**Signal Generation → Noise Addition → FIR Filtering → FFT Analysis**
 
-A composite signal containing 50 Hz and 200 Hz frequency components is generated and sampled at 1 kHz. Random Gaussian noise is added to simulate a noisy measurement.
+A composite signal containing **50 Hz and 200 Hz** frequency components is generated and sampled at **1 kHz**. Noise is added to simulate a noisy measurement.
 
-A 21-tap FIR low-pass filter is then designed in MATLAB and implemented manually in C using the convolution equation.
+A **21-tap FIR low-pass filter** with a cutoff frequency of approximately **100 Hz** is then designed in MATLAB and implemented manually in C using the convolution equation.
 
 The C implementation is verified against MATLAB by comparing their filtered outputs.
 
 ## Features
 
-- Generation of discrete-time signals
+- Discrete-time signal generation
 - Sampling and Nyquist criterion analysis
 - Gaussian noise modeling
 - FIR low-pass filter design
@@ -25,7 +25,7 @@ The C implementation is verified against MATLAB by comparing their filtered outp
 - C vs MATLAB output verification
 - FFT-based frequency-domain analysis
 
-## Signal Parameters
+## System Parameters
 
 | Parameter | Value |
 |---|---:|
@@ -40,15 +40,15 @@ The C implementation is verified against MATLAB by comparing their filtered outp
 
 ## DSP Concepts
 
-### Signal Generation
+### 1. Signal Generation
 
 The input signal is:
 
 x[n] = sin(2π50n/Fs) + 0.5sin(2π200n/Fs)
 
-The signal contains frequency components at 50 Hz and 200 Hz.
+The signal contains frequency components at **50 Hz** and **200 Hz**.
 
-### Sampling
+### 2. Sampling
 
 The sampling frequency is:
 
@@ -64,7 +64,7 @@ Fs > 2Fmax
 
 Therefore, the chosen sampling frequency is sufficient to avoid aliasing for the signal components.
 
-### FIR Filtering
+### 3. FIR Filtering
 
 A 21-tap FIR low-pass filter is used with a cutoff frequency of approximately 100 Hz.
 
@@ -80,15 +80,53 @@ where:
 
 The FIR equation is implemented manually in C.
 
-### FFT Analysis
+### 4. FFT Analysis
 
 FFT is used to analyze the frequency content of the signal.
 
-The spectrum shows the original 50 Hz and 200 Hz components. After low-pass filtering, the 50 Hz component is retained while the 200 Hz component is significantly attenuated.
+The spectrum shows the original **50 Hz and 200 Hz** components.
 
-## MATLAB and C Verification
+After low-pass filtering, the **50 Hz component is retained** while the **200 Hz component is significantly attenuated**.
 
-The FIR filter was implemented independently in C and compared against MATLAB's FIR filtering result.
+## C and MATLAB Verification
 
-The outputs closely match, validating the C implementation.
+The FIR filter was independently implemented in C and compared against MATLAB's FIR filtering result.
 
+The two outputs closely match, providing verification of the C implementation.
+
+## Results
+
+
+
+### C vs MATLAB Verification
+
+The C implementation produces an output closely matching MATLAB's FIR filtering result.
+
+![C vs MATLAB](Results/c_vs_matlab.png)
+
+### FFT Analysis
+
+The FFT shows the 50 Hz and 200 Hz frequency components. After filtering, the 200 Hz component is significantly reduced.
+
+![FFT Analysis](Results/fft_analysis.png)
+
+## Project Structure
+
+```text
+DSP-Signal-Processing-Toolkit/
+│
+├── C/
+│   └── fir_filter.c
+│
+├── MATLAB/
+│   ├── fir_filter.m
+│   ├── compare_c_matlab.m
+│   └── fft_analysis.m
+│
+├── Results/
+│   ├── c_filtered_signal.csv
+│   ├── signal_comparison.png
+│   ├── c_vs_matlab.png
+│   └── fft_analysis.png
+│
+└── README.md
